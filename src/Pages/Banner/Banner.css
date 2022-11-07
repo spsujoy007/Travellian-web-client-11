@@ -1,0 +1,10 @@
+.motherCarousel{
+    height: 380px;
+    overflow: hidden;
+}
+.motherCarousel img{
+    transition: all 0.5s;
+}
+.motherCarousel:hover img{
+    transform: scale(1.2);
+}
