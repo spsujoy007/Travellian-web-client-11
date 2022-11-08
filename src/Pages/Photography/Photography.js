@@ -16,8 +16,8 @@ const Photography = () => {
             Travel photography is a genre of photography that may involve the documentation of an area's landscape, people, cultures, customs, and history.
 			</p>
 			<div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-				<Link rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-emerald-600 text-gray-50">Join contest</Link>
-				<Link rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-gray-800">About contest</Link>
+				<Link rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-primary text-gray-50">Join contest</Link>
+				<Link rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-primary">About contest</Link>
 			</div>
 		</div>
 	</div>

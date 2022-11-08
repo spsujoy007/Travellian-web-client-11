@@ -10,8 +10,8 @@ const Banner = () => {
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="">
-      <h1 className="mb-5 text-4xl font-bold">Welcome to travellian</h1>
-      <p className="mb-5">Lets visit the world..</p>
+      <h1 className="mb-5 text-5xl font-bold">Welcome to travellian</h1>
+      <p className="mb-5">Travel is the movement of people between distant geographical locations. </p>
     </div>
   </div>
 </div>
@@ -27,8 +27,8 @@ const Banner = () => {
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="">
-      <h1 className="mb-5 text-4xl font-bold">Welcome to travellian</h1>
-      <p className="mb-5">Lets visit the world..</p>
+      <h1 className="mb-5 text-5xl font-bold">Welcome to travellian</h1>
+      <p className="mb-5">Travel is the movement of people between distant geographical locations. </p>
     </div>
   </div>
 </div>
@@ -44,8 +44,8 @@ const Banner = () => {
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="">
-      <h1 className="mb-5 text-4xl font-bold">Welcome to travellian</h1>
-      <p className="mb-5">Lets visit the world..</p>
+      <h1 className="mb-5 text-5xl font-bold">Welcome to travellian</h1>
+      <p className="mb-5">Travel is the movement of people between distant geographical locations. </p>
     </div>
   </div>
 </div>
