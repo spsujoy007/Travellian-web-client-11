@@ -5,8 +5,6 @@ import ServiceCard from '../ServiceCard/ServiceCard';
 const Services = () => {
     const services = useLoaderData();
 
-
-
     return (
         <div className='my-20'>
             <div className='text-center py-6'>
@@ -15,7 +13,7 @@ const Services = () => {
             </div>
             <div className='grid grid-cols-3 gap-10 '>
             {
-                services.map((service, index) => index < 3 && <ServiceCard
+                services.map(service => <ServiceCard
                     key={service._id}
                     service={service}
                 ></ServiceCard>)
