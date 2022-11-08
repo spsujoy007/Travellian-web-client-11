@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Services = () => {
@@ -8,14 +8,26 @@ const Services = () => {
 
 
     return (
-        <div className='grid grid-cols-3 gap-10 my-12'>
+        <div className='my-20'>
+            <div className='text-center py-6'>
+                <h1 className='text-5xl uppercase font-semibold mb-3'>Places to visit</h1>
+                <p>Lets explore the world of places</p>
+            </div>
+            <div className='grid grid-cols-3 gap-10 '>
             {
                 services.map((service, index) => index < 3 && <ServiceCard
                     key={service._id}
                     service={service}
                 ></ServiceCard>)
             }
+
             {/* (item, index) => index < 5 &&  */}
+        </div>
+            <div className='flex justify-center mt-10'>
+                <Link to='/services'>
+                <button className='btn btn-outline btn-primary px-20'>See all</button>
+                </Link>
+            </div>
         </div>
     );
 };

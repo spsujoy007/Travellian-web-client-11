@@ -12,7 +12,7 @@ const ServiceCard = ({ service }) => {
         <p>{description.slice(0, 100)}...</p>
         <h3 className="text-xl text-primary font-semibold">Price: ${price}</h3>
         <div className="card-actions ">
-          <button className="btn btn-primary w-full">Buy Now</button>
+          <button className="btn btn-primary w-full">Place details</button>
         </div>
       </div>
     </div>
