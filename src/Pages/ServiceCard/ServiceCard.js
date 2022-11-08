@@ -12,7 +12,7 @@ const ServiceCard = ({ service }) => {
         <h2 className="card-title">{title}</h2>
         <p>{description.slice(0, 100)}...</p>
         <h3 className="text-xl text-primary font-semibold">Price: ${price}</h3>
-          <Link to={`/service/${_id}`}>
+          <Link to={`/services/${_id}`}>
         <div className="card-actions ">
             <button title={`More details about ${title}`} className="btn btn-primary w-full">
                 More details
