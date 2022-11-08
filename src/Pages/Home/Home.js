@@ -10,12 +10,15 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Services></Services>
+
             <div className='py-20'>
-                <Photography></Photography>
+            <Photography></Photography>
             </div>
+
             <div className='py-20'>
-                <AboutSomePlaces></AboutSomePlaces>
+            <AboutSomePlaces></AboutSomePlaces>
             </div>
+            
             <TrustedCompanies></TrustedCompanies>
         </div>
     );
