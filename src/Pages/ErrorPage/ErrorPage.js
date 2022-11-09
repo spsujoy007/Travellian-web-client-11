@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UseTitleHook from '../UseTitleHook/UseTitleHook';
 
 const ErrorPage = () => {
+	UseTitleHook('Error 404')
     return (
         <div>
             <section className="flex items-center h-full p-16 text-gray-800">

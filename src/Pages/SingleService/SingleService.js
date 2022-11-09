@@ -33,7 +33,7 @@ const SingleService = () => {
           <p>{description}</p>
           <h3 className="text-xl">Price: ${price}</h3>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Watch</button>
+            <button className="btn btn-primary">Check out</button>
           </div>
         </div>
         

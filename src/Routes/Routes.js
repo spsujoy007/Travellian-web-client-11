@@ -1,11 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import AddNewService from "../Pages/AddNewService/AddNewService";
+import AddReviews from "../Pages/AddReviews/AddReviews";
 import AllServices from "../Pages/AllServices/AllServices";
 import Blog from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Reviews from "../Pages/Reviews/Reviews";
 import SingleService from "../Pages/SingleService/SingleService";
 
 export const routes = createBrowserRouter([
@@ -38,6 +41,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Register></Register>
+            },
+            {
+                path: '/addservice',
+                element: <AddNewService></AddNewService>
+            },
+            {
+                path: '/reviews',
+                element: <AddReviews></AddReviews>
             }
         ],
         errorElement: <ErrorPage></ErrorPage>,
