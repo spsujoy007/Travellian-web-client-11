@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Register = () => {
+    const {singupWithEmail, updateUserProfile} = useContext(AuthContext);
+
+    const handleRegister = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photoUrl = form.photoUrl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, photoUrl, email, password)
+        singupWithEmail(email, password)
+        .then(result => {
+            const user = result.user;
+			console.log(user)
+			handleUpdateProfile(name, photoUrl)
+			alert("Signup successful")
+			form.reset()
+        })
+        .catch(error => console.error(error));
+    }
+
+	const handleUpdateProfile = (name, photoUrl) => {
+		const profile = {
+			displayName: name,
+			photoURL: photoUrl
+		}
+		updateUserProfile(profile)
+		.then(() => {
+
+		})
+		.catch(error => console.error(error))
+	}
+
     return (
         <div>
             <div className='my-7'>
            <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 mx-auto">
 	<h1 className="text-2xl font-bold text-center">Registration</h1>
-	<form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+	<form onSubmit={handleRegister} className="space-y-6 ng-untouched ng-pristine ng-valid">
 		<div className="space-y-1 text-sm">
 			<label for="name" className="block text-gray-600">Name</label>
 			<input type="text" name="name" id="name" placeholder="name" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
@@ -24,7 +58,7 @@ const Register = () => {
 			<label for="password" className="block text-gray-600">Password</label>
 			<input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
 		</div>
-		<button className="block w-full p-3 text-center rounded-sm text-gray-50 bg-emerald-600">Sign in</button>
+		<button type='submit' className="block w-full p-3 text-center rounded-sm text-gray-50 bg-primary">Sign up</button>
 	</form>
 	<div className="flex items-center pt-4 space-x-1">
 		<div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
@@ -40,7 +74,7 @@ const Register = () => {
 		
 	</div>
 	<p className="text-xl text-center text-gray-600">Already have an account?
-		<Link rel="noopener noreferrer" href="#" className="underline text-gray-800" to="/login">Login</Link>
+		<Link rel="noopener noreferrer" className="underline text-gray-800" to="/login">Login</Link>
 	</p>
 </div>
         </div>

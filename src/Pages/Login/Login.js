@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Login = () => {
+	const {signinWithPassword} = useContext(AuthContext)
+
+	const handleLoginForm = (event) => {
+		event.preventDefault();
+		const form = event.target;
+		const email = form.email.value;
+		const password = form.password.value;
+		signinWithPassword(email, password)
+		.then(result => {
+			const user = result.user;
+			console.log(user);
+			alert('Login successful')
+		})
+		.catch(err => console.error(err))
+ 	}
+
     return (
         <div className='my-7'>
            <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 mx-auto">
 	<h1 className="text-2xl font-bold text-center">Login</h1>
-	<form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+	<form onSubmit={handleLoginForm} className="space-y-6 ng-untouched ng-pristine ng-valid">
 		<div className="space-y-1 text-sm">
-			<label for="username" className="block text-gray-600">Username</label>
-			<input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
+			<label for="email" className="block text-gray-600">Email</label>
+			<input type="email" name="email" id="email" placeholder="email" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
 		</div>
 		<div className="space-y-1 text-sm">
 			<label for="password" className="block text-gray-600">Password</label>
 			<input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
 		</div>
-		<button className="block w-full p-3 text-center rounded-sm text-gray-50 bg-emerald-600">Sign in</button>
+		<button type='submit' className="block w-full p-3 text-center rounded-sm text-gray-50 bg-primary">Log in</button>
 	</form>
 	<div className="flex items-center pt-4 space-x-1">
 		<div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
