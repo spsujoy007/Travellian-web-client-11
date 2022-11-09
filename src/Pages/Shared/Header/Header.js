@@ -1,11 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { FaUser } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
+    const {user, logOut} = useContext(AuthContext)
+
+    const handleLogout = () => {
+      logOut()
+      .then(() => {})
+      .catch(err => console.error(err))
+    }
 
     const navItem = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/blog'>Blog</Link></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/blog'>Blog</NavLink></li>
+        {user ? 
+        <>
+          <li><NavLink to='/reviews'>My Reviews</NavLink></li>
+          <li><NavLink to='/addservice'>Add service</NavLink></li>
+          <li><button onClick={handleLogout}>Logout</button></li>
+        </> 
+        : 
+          <li><NavLink to='/login'>Login</NavLink></li>
+        }
     </>
 
     return (
@@ -27,7 +45,15 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link className="btn btn-outline btn-primary px-10" to='/login'>Login</Link>
+    <h4 className='mx-3'>{user?.displayName ? user.displayName : ""}</h4>
+    <Link className="rounded-xl">
+      {
+        user ? 
+        <img title={user?.displayName} style={{width: '40px', height: '40px', borderRadius: "60px", border: "3px solid gray"}} src={user.photoURL} alt="profileImg" />
+        :
+        <FaUser></FaUser>
+      }
+    </Link>
   </div>
 </div>
     );

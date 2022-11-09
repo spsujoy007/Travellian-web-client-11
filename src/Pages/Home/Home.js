@@ -4,8 +4,11 @@ import Photography from '../Photography/Photography';
 import AboutSomePlaces from '../AboutSomePlaces/AboutSomePlaces';
 import TrustedCompanies from '../TrustedCompanies/TrustedCompanies';
 import Services from '../Services/Services';
+import UseTitleHook from '../UseTitleHook/UseTitleHook';
 
 const Home = () => {
+	UseTitleHook('Home')
+
     return (
         <div>
             <Banner></Banner>

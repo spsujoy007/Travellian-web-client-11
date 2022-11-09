@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import { GoogleAuthProvider } from 'firebase/auth';
+import UseTitleHook from '../UseTitleHook/UseTitleHook';
 const notify = () => toast.success('Registration succesful');
 const googleProvider = new GoogleAuthProvider();
 
 
 const Register = () => {
+	UseTitleHook('Register')
+	
     const {singupWithEmail, updateUserProfile, signUpWithPopUp} = useContext(AuthContext);
 	const [success, setSuccess] = useState('');
 	const [error, setError] = useState('');
