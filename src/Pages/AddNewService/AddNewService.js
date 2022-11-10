@@ -6,7 +6,6 @@ const notify = () => toast.success('Service added');
 
 const AddNewService = () => {
     UseTitleHook('Add Service');
-    const {user} = useContext(AuthContext)
 
     const handleAddService = (event) => {
         event.preventDefault();
@@ -24,7 +23,7 @@ const AddNewService = () => {
             price: price
         }
 
-        fetch('https://travellian-server.vercel.app/service', {
+        fetch('https://travellian-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 "content-type": 'application/json'
