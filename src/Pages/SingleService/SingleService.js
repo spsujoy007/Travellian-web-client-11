@@ -1,15 +1,58 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Reviews from "../Reviews/Reviews";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { FaAngleLeft } from "react-icons/fa";
 import UseTitleHook from "../UseTitleHook/UseTitleHook";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const SingleService = () => {
+  const {user} = useContext(AuthContext)
   const service = useLoaderData();
-  const {img, title, description, price } = service;
-  UseTitleHook(`${title}`)
+  const {_id, img, title, description, price } = service;
+  UseTitleHook(`${title}`);
+
+  const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        const url = `http://localhost:5000/reviews?serviceId=${_id}`
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setReviews(data))
+        
+    }, [_id])
+
+  const handlePostReview = (event) => {
+    event.preventDefault();
+    const message = event.target.message.value;
+    const name = user?.displayName;
+    const img = user?.photoURL;
+    console.log(message, name, img)
+    const review = {
+        serviceId: _id,
+        message: message,
+        name: name,
+        img: img,
+        email: user.email
+    }
+
+    fetch('http://localhost:5000/reviews', {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(review)
+    })
+    .then(res => res.json())        
+    .then(data => {
+        console.log(data)
+        event.target.reset()
+    })
+    .catch(err => console.error(err))
+
+}
+
   return (
     <div className="py-14">
 
@@ -41,7 +84,12 @@ const SingleService = () => {
 
       <Reviews
         service={service}
+        handlePostReview={handlePostReview}
       ></Reviews>
+
+      <div>
+        <h2>This is reviews section {reviews.length}</h2>
+      </div>
     </div>
   );
 };

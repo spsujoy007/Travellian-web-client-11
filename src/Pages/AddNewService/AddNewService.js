@@ -22,7 +22,7 @@ const AddNewService = () => {
             price: price
         }
 
-        fetch('http://localhost:5000/addservice', {
+        fetch('http://localhost:5000/service', {
             method: 'POST',
             headers: {
                 "content-type": 'application/json'
@@ -32,7 +32,7 @@ const AddNewService = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            alert('Vaiya add hoice')
+            alert('Product added')
         })
         .catch(err => console.log(err))
     }

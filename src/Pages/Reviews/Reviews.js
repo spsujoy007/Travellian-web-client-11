@@ -1,46 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import ReviewTable from './ReviewTable';
+import PrivetRoute from '../PrivetRoute/PrivetRoute'
 
-const Reviews = ({service}) => {
+const Reviews = ({service, handlePostReview}) => {
+    const {_id} = service;
+
     const {user} = useContext(AuthContext);
-    const [reviews, setReviews] = useState([]);
-    useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setReviews(data))
-        
-    }, [user?.email])
     
-    console.log(reviews);
-    const handlePostReview = (event) => {
-        event.preventDefault();
-        const message = event.target.message.value;
-        const name = user?.displayName;
-        const img = user?.photoURL;
-        console.log(message, name, img)
-        const review = {
-            message: message,
-            name: name,
-            img: img,
-            email: user.email
-        }
 
-        fetch('http://localhost:5000/reviews', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(review)
-        })
-        .then(res => res.json())        
-        .then(data => {
-            console.log(data)
-            event.target.reset()
-        })
-        .catch(err => console.error(err))
 
-    }
+    
+    
 
     return (
         <div>
@@ -55,20 +27,13 @@ const Reviews = ({service}) => {
             {/* form input review */}
             <div>
                 <form onSubmit={handlePostReview} className='flex items-center'>
-                <input name='message' type="text" placeholder="Type here" className="input input-bordered w-full  mr-5"/>
-                    <button type='submit' className='btn btn-primary'>Post</button>
+                <input name='message' type="text" placeholder="Type here" className="input input-bordered w-full mr-5" required/>
+                    <PrivetRoute><button type='submit' className='btn btn-primary'>Post</button></PrivetRoute>
                 </form>
             </div>
             </div>
 
-        {/* show reviews  */}
-        <div>
-            {
-                reviews.map(review => <p key={review._id}>
-                    {review.message}
-                    </p>)
-            }
-        </div>
+      
 
         </div>
     );

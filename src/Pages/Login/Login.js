@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import { GoogleAuthProvider } from 'firebase/auth';
@@ -8,11 +8,15 @@ const notify = () => toast.success('Login successful');
 const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
+
 	UseTitleHook('Login')
 
 	const {signinWithPassword, signUpWithPopUp} = useContext(AuthContext)
 	const [success, setSuccess] = useState('');
 	const [error, setError] = useState('');
+	const location = useLocation();
+	const from = location.state?.from.pathname || "/";
+	const navigate = useNavigate();
 
 	const handleLoginForm = (event) => {
 		event.preventDefault();
@@ -26,6 +30,7 @@ const Login = () => {
 			setSuccess(true)
 			notify();
 			form.reset()
+			navigate(from, {replace: true})
 		})
 		.catch(err => setError(err.message))
  	}
