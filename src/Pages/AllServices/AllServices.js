@@ -7,7 +7,7 @@ const AllServices = () => {
     UseTitleHook("Services")
     const [services, setSevices] = useState([]);
     useEffect( () => {
-        fetch('http://localhost:5000/services')
+        fetch('https://travellian-server.vercel.app/services')
         .then(res => res.json())
         .then(data => setSevices(data))
     } , [services])

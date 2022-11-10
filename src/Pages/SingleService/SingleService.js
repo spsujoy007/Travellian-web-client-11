@@ -18,8 +18,8 @@ const SingleService = () => {
   const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        // const url = `http://localhost:5000/review?serviceId=${_id}`
-        const url = `http://localhost:5000/reviews`
+        // const url = `https://travellian-server.vercel.app/review?serviceId=${_id}`
+        const url = `https://travellian-server.vercel.app/reviews`
         fetch(url)
         .then(res => res.json())
         .then(data => setReviews(data))
@@ -30,7 +30,7 @@ const SingleService = () => {
   const handleDelete = id => {
     const procced = window.confirm("Are you sure, you want to delete your product?");
     if(procced){
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://travellian-server.vercel.app/reviews/${id}`, {
             method: "DELETE"
         })
         .then(res => res.json())
@@ -60,7 +60,7 @@ const SingleService = () => {
         email: user.email
     }
 
-    fetch('http://localhost:5000/reviews', {
+    fetch('https://travellian-server.vercel.app/reviews', {
         method: "POST",
         headers: {
             'content-type': 'application/json'

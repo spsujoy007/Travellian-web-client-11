@@ -24,7 +24,7 @@ const AddNewService = () => {
             price: price
         }
 
-        fetch('http://localhost:5000/service', {
+        fetch('https://travellian-server.vercel.app/service', {
             method: 'POST',
             headers: {
                 "content-type": 'application/json'

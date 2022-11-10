@@ -5,8 +5,8 @@ const AddReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        // const url = `http://localhost:5000/review?serviceId=${_id}`
-        const url = `http://localhost:5000/reviews`
+        // const url = `https://travellian-server.vercel.app/review?serviceId=${_id}`
+        const url = `https://travellian-server.vercel.app/reviews`
         fetch(url)
         .then(res => res.json())
         .then(data => setReviews(data))

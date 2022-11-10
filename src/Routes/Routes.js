@@ -9,7 +9,6 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import PrivetRoute from "../Pages/PrivetRoute/PrivetRoute";
 import Register from "../Pages/Register/Register";
-import Reviews from "../Pages/Reviews/Reviews";
 import SingleService from "../Pages/SingleService/SingleService";
 
 export const routes = createBrowserRouter([
@@ -19,7 +18,7 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                loader: () => fetch('http://localhost:5000/limitservices'),
+                loader: () => fetch('https://travellian-server.vercel.app/limitservices'),
                 element: <Home></Home>
             },
             {
@@ -32,7 +31,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/services/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`),
+                loader: ({params}) => fetch(`https://travellian-server.vercel.app/services/${params.id}`),
                 element: <SingleService></SingleService>
             },
             {
