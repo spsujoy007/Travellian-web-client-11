@@ -8,10 +8,11 @@ const PrivetRoute = ({children}) => {
     const location = useLocation();
     if(loading){
         return <>
-            <progress className="progress w-56 progress-primary"></progress>
-        </>
+            <div className='flex justify-center my-56'>
+                <progress className="progress w-56 progress-primary"></progress>
+            </div>
+              </>
     }
-
     if(!user){
         return <Navigate to='/login' state={{from: location}} replace></Navigate>
     }

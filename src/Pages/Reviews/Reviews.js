@@ -1,18 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { FaUser } from 'react-icons/fa';
+import React, { useContext} from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import ReviewTable from './ReviewTable';
-import PrivetRoute from '../PrivetRoute/PrivetRoute'
 
 const Reviews = ({service, handlePostReview}) => {
     const {_id} = service;
 
     const {user} = useContext(AuthContext);
-    
-
-
-    
-    
+       
 
     return (
         <div>
@@ -28,7 +21,14 @@ const Reviews = ({service, handlePostReview}) => {
             <div>
                 <form onSubmit={handlePostReview} className='flex items-center'>
                 <input name='message' type="text" placeholder="Type here" className="input input-bordered w-full mr-5" required/>
-                    <PrivetRoute><button type='submit' className='btn btn-primary'>Post</button></PrivetRoute>
+                    {user?.uid ? 
+                    <button type='submit' className='btn btn-primary'>Post</button>
+                    :
+                    <>
+                        <button disabled type='submit' className='btn btn-primary'>Post</button>
+                    </>
+                }
+                
                 </form>
             </div>
             </div>

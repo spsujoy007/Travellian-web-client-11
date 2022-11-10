@@ -6,6 +6,8 @@ import 'react-photo-view/dist/react-photo-view.css';
 import { FaAngleLeft } from "react-icons/fa";
 import UseTitleHook from "../UseTitleHook/UseTitleHook";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import ShowReviews from "../ShowReviews/ShowReviews";
+import ReviewCompo from "../ReviewsCompo/ReviewCompo";
 
 const SingleService = () => {
   const {user} = useContext(AuthContext)
@@ -16,12 +18,33 @@ const SingleService = () => {
   const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/reviews?serviceId=${_id}`
+        // const url = `http://localhost:5000/review?serviceId=${_id}`
+        const url = `http://localhost:5000/reviews`
         fetch(url)
         .then(res => res.json())
         .then(data => setReviews(data))
         
-    }, [_id])
+    }, [reviews])
+
+  //delete a review
+  const handleDelete = id => {
+    const procced = window.confirm("Are you sure, you want to delete your product?");
+    if(procced){
+        fetch(`http://localhost:5000/reviews/${id}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.deletedCount > 0){
+                // notify();
+                const remaining = reviews.filter(view => view._id !== id);
+                setReviews(remaining)
+                alert('Review deleted')
+            }
+        })
+    }
+}
 
   const handlePostReview = (event) => {
     event.preventDefault();
@@ -49,7 +72,9 @@ const SingleService = () => {
         console.log(data)
         event.target.reset()
     })
-    .catch(err => console.error(err))
+    .catch(err => console.error(err));
+
+
 
 }
 
@@ -87,8 +112,9 @@ const SingleService = () => {
         handlePostReview={handlePostReview}
       ></Reviews>
 
-      <div>
-        <h2>This is reviews section {reviews.length}</h2>
+      {/* Reviews table  */}
+      <div className="mt-6">
+        <ReviewCompo reviews={reviews} handleDelete={handleDelete}></ReviewCompo>
       </div>
     </div>
   );

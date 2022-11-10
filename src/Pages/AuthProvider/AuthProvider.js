@@ -60,7 +60,8 @@ const AuthProvider = ({children}) => {
         signinWithPassword, 
         signUpWithPopUp,
         logOut,
-        loading
+        loading,
+        setLoading
     };
 
     return (

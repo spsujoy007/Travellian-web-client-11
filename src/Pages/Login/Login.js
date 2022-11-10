@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import toast, { Toaster } from 'react-hot-toast';
 import { GoogleAuthProvider } from 'firebase/auth';
 import UseTitleHook from '../UseTitleHook/UseTitleHook';
+import toast, { Toaster } from 'react-hot-toast';
 const notify = () => toast.success('Login successful');
 const googleProvider = new GoogleAuthProvider();
 

@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import UseTitleHook from "../UseTitleHook/UseTitleHook";
+import toast, { Toaster } from 'react-hot-toast';
+const notify = () => toast.success('Service added');
 
 const AddNewService = () => {
-    const {user} = useContext(AuthContext)
     UseTitleHook('Add Service');
+    const {user} = useContext(AuthContext)
 
     const handleAddService = (event) => {
         event.preventDefault();
@@ -32,7 +34,8 @@ const AddNewService = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            alert('Product added')
+            notify()
+            form.reset()
         })
         .catch(err => console.log(err))
     }
@@ -41,24 +44,27 @@ const AddNewService = () => {
   return (
     <div>
         <div>
-            <h1 className="text-5xl uppercase mt-10 py-5 text-center text-primary font-semibold">add new service</h1> <hr />
+            <h1 className="text-3xl uppercase mt-6 py-4 text-dark font-semibold">add a new <span className="text-primary">service</span></h1> <hr />
         </div>
       <div className="my-7">
       <form onSubmit={handleAddService}>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
-                    <input name='title' type="text" placeholder="Title" className="input input-bordered w-full" required/>
+                    <input name='title' type="text" placeholder="Title" className="input input-bordered w-full border border-5 border-primary" required/>
 
-                    <input name='img' type="text" placeholder="image url" className="input input-bordered w-full" required/>
+                    <input name='img' type="text" placeholder="image url" className="input input-bordered w-full border border-5 border-primary" required/>
 
                 </div>
-                    <textarea required name='description' className="textarea textarea-bordered w-full mt-5" placeholder="description"></textarea>
+                    <textarea required name='description' style={{height: '140px'}} className="textarea textarea-bordered w-full mt-5 border border-5 border-primary" placeholder="description about service"></textarea>
                     
-                    <div className="flex justify-end">
+                    <div className="flex justify-start">
                     <input name='price' type="number" placeholder="price" className="input input-bordered w-60 border border-5 border-primary" required/>
                     </div>
 
-                    <input type="submit" className='btn bg-primary border-0 w-full my-10' value="Place order" />
+                    <div className="flex justify-end">
+                        <input type="submit" className='btn bg-primary border-0 w-full md:w-36   my-10' value="Click to add" />
+                    </div>
         </form>
+        <Toaster></Toaster>
       </div>
       
     </div>

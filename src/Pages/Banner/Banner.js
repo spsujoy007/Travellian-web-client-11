@@ -4,7 +4,7 @@ import './Banner.css'
 const Banner = () => {
     return (
         <div>
-            <div className="carousel w-full ">
+            <div className="carousel w-full image-father">
   <div id="slide1" className="flex items-center carousel-item relative w-full motherCarousel">
   <div className="hero min-h-screen" style={{ backgroundImage: `url("https://img.freepik.com/free-photo/full-shot-travel-concept-with-landmarks_23-2149153258.jpg?3")` }}>
   <div className="hero-overlay bg-opacity-60"></div>

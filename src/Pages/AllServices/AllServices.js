@@ -3,6 +3,7 @@ import ServiceCard from '../ServiceCard/ServiceCard';
 import UseTitleHook from '../UseTitleHook/UseTitleHook';
 
 const AllServices = () => {
+    
     UseTitleHook("Services")
     const [services, setSevices] = useState([]);
     useEffect( () => {

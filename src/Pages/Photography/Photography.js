@@ -9,7 +9,7 @@ const Photography = () => {
 			<img src="https://images.pexels.com/photos/3217911/pexels-photo-3217911.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" className="object-contain w-80" />
 		</div>
 		<div className="flex flex-col justify-center p-2 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-			<h1 className="md:text-4xl font-bold leading-none text-6xl">
+			<h1 className="md:text-4xl font-bold leading-none text-2xl mt-16 md:mt-0">
                 Travellian photography contest
 			</h1>
 			<p className="mt-6 mb-8 text-lg sm:mb-12">

@@ -12,6 +12,7 @@ const Header = () => {
       .catch(err => console.error(err))
     }
 
+
     const navItem = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/blog'>Blog</NavLink></li>
@@ -27,7 +28,7 @@ const Header = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -45,12 +46,13 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <h4 className='mx-3'>{user?.displayName ? user.displayName : ""}</h4>
-    <Link className="rounded-xl">
+    
+      <h4>{user?.displayName.slice(0, 10)}...</h4>
+    <Link className="rounded-xl ml-4">
       {
         user ? 
-        <img title={user?.displayName} style={{width: '40px', height: '40px', borderRadius: "60px", border: "3px solid gray"}} src={user.photoURL} alt="profileImg" />
-        :
+        <img tabIndex={0} className='border-primary border-solid border-4' title={user?.displayName} style={{width: '40px', height: '40px', borderRadius: "60px"}} src={user.photoURL} alt="profileImg" />
+          :
         <FaUser></FaUser>
       }
     </Link>

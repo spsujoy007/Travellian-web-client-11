@@ -7,6 +7,7 @@ import Blog from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import PrivetRoute from "../Pages/PrivetRoute/PrivetRoute";
 import Register from "../Pages/Register/Register";
 import Reviews from "../Pages/Reviews/Reviews";
 import SingleService from "../Pages/SingleService/SingleService";
@@ -44,11 +45,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/addservice',
-                element: <AddNewService></AddNewService>
+                element: <PrivetRoute><AddNewService></AddNewService></PrivetRoute>
             },
             {
                 path: '/reviews',
-                element: <AddReviews></AddReviews>
+                element: <PrivetRoute><AddReviews></AddReviews></PrivetRoute>
             }
         ],
         errorElement: <ErrorPage></ErrorPage>,

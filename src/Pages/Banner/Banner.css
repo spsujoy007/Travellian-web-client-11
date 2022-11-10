@@ -8,3 +8,7 @@
 .motherCarousel:hover img{
     transform: scale(1.2);
 }
+
+.image-father {
+    border-radius: 15px;
+}
