@@ -3,8 +3,8 @@ import ServiceCard from '../ServiceCard/ServiceCard';
 import UseTitleHook from '../UseTitleHook/UseTitleHook';
 
 const AllServices = () => {
-    
     UseTitleHook("Services")
+
     const [services, setSevices] = useState([]);
     useEffect( () => {
         fetch('https://travellian-server.vercel.app/services')
@@ -18,7 +18,7 @@ const AllServices = () => {
                 services.map(service => <ServiceCard
                     key={service._id}
                     service={service}
-                ></ServiceCard>)
+                    ></ServiceCard>)
             }
         </div>
     );

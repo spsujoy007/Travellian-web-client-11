@@ -1,0 +1,20 @@
+.puzzleBtn{
+    color: white;
+    background-color: rgb(187, 187, 187);
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+.puzzleHead:hover{
+    animation: puzzle 2s ;
+
+}
+
+@keyframes puzzle {
+    0%{
+       margin-left: 0; 
+    }
+    100%{
+        margin-left: 200px;
+    }
+
+}

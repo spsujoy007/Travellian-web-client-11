@@ -1,7 +1,7 @@
 import React from 'react';
 import ShowReviews from '../ShowReviews/ShowReviews';
 
-const ReviewCompo = ({reviews, handleDelete}) => {
+const ReviewCompo = ({reviews, handleDelete, service}) => {
     return (
         <div>
             <div className="overflow-x-auto w-full">
@@ -14,7 +14,8 @@ const ReviewCompo = ({reviews, handleDelete}) => {
           </label>
         </th>
         <th>Name</th>
-        <th>Message</th>
+        <th>Service</th>
+        <th>Reviews</th>
         <th></th>
       </tr>
     </thead>
@@ -25,6 +26,7 @@ const ReviewCompo = ({reviews, handleDelete}) => {
           key={review._id}
           review={review}
           handleDelete={handleDelete}
+          service={service}
         ></ShowReviews>)
       }
      

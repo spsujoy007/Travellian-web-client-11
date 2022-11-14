@@ -1,5 +1,6 @@
 .imgBody{
     width: 100%;
+    height: 190px;
     overflow: hidden;
 }
 .imgBody img{

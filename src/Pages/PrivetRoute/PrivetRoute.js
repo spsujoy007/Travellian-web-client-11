@@ -8,9 +8,12 @@ const PrivetRoute = ({children}) => {
     const location = useLocation();
     if(loading){
         return <>
-            <div className='flex justify-center my-56'>
+                <div className='my-56'>
+                <h1 className='text-center mb-2 text-2xl'>Loading...</h1>
+            <div className='flex justify-center '>
                 <progress className="progress w-56 progress-primary"></progress>
             </div>
+                </div>
               </>
     }
     if(!user){

@@ -33,14 +33,15 @@ const Login = () => {
 			navigate(from, {replace: true})
 		})
 		.catch(err => setError(err.message))
- 	}
-
-	 const handleGoogleSign = () => {
+	}
+	
+	const handleGoogleSign = () => {
 		signUpWithPopUp(googleProvider)
 		.then(result => {
 			const user = result.user;
 			notify()
 			console.log(user)
+			navigate(from, {replace: true})
 		})
 		.catch(err => console.log(err))
 	}

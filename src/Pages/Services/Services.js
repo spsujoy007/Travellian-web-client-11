@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Services = () => {
-	
-
     const services = useLoaderData();
 
     return (
@@ -25,7 +23,7 @@ const Services = () => {
         </div>
             <div className='flex justify-center mt-10'>
                 <Link to='/services'>
-                <button className='btn btn-outline btn-primary px-20'>See all</button>
+                    <button className='btn btn-outline btn-primary px-20'>See all</button>
                 </Link>
             </div>
         </div>

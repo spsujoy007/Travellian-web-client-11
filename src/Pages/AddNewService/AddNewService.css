@@ -1,0 +1,20 @@
+.warningTxt{
+    animation: fliping 2.8s infinite;
+}
+
+@keyframes fliping {
+    0%{
+        color: #e73737;
+        padding-right: 0px;
+    }
+    50%{
+        color: white;
+        padding-right: 20px;
+    }
+    75%{
+        color: #e75137;
+    }
+    100%{
+        color: white;
+    }
+}

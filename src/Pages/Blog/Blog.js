@@ -5,9 +5,9 @@ const Blog = () => {
 	UseTitleHook('Blog')
 
     return (
-        <section className="bg-gray-100 text-gray-800 my-10">
+        <section className="my-10">
 	<div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
-		<h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">Our Blogs</h2>
+		<h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl uppercase">Our Blogs</h2>
 		<div className="divide-y divide-gray-300">
 			<div className="py-6 space-y-2 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
 				<h3 className="font-semibold md:col-span-5">1. What difference between SQL and nonSQL</h3>

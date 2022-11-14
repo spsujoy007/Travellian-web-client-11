@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import AddNewService from "../Pages/AddNewService/AddNewService";
-import AddReviews from "../Pages/AddReviews/AddReviews";
 import AllServices from "../Pages/AllServices/AllServices";
 import Blog from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import MyReviews from "../Pages/MyReviews/MyReviews";
 import PrivetRoute from "../Pages/PrivetRoute/PrivetRoute";
 import Register from "../Pages/Register/Register";
 import SingleService from "../Pages/SingleService/SingleService";
@@ -44,11 +44,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/addservice',
-                element: <AddNewService></AddNewService>
+                element: <PrivetRoute><AddNewService></AddNewService></PrivetRoute>
             },
             {
                 path: '/reviews',
-                element: <PrivetRoute><AddReviews></AddReviews></PrivetRoute>
+                element: <PrivetRoute><MyReviews></MyReviews></PrivetRoute>
             }
         ],
         errorElement: <ErrorPage></ErrorPage>,

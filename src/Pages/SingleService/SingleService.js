@@ -6,7 +6,6 @@ import 'react-photo-view/dist/react-photo-view.css';
 import { FaAngleLeft } from "react-icons/fa";
 import UseTitleHook from "../UseTitleHook/UseTitleHook";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import ShowReviews from "../ShowReviews/ShowReviews";
 import ReviewCompo from "../ReviewsCompo/ReviewCompo";
 
 const SingleService = () => {
@@ -22,27 +21,33 @@ const SingleService = () => {
         const url = `https://travellian-server.vercel.app/reviews`
         fetch(url)
         .then(res => res.json())
-        .then(data => setReviews(data))
-        
+        .then(data => setReviews(data));
     }, [reviews])
 
   //delete a review
   const handleDelete = id => {
-    const procced = window.confirm("Are you sure, you want to delete your product?");
-    if(procced){
-        fetch(`https://travellian-server.vercel.app/reviews/${id}`, {
-            method: "DELETE"
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.deletedCount > 0){
-                // notify();
-                const remaining = reviews.filter(view => view._id !== id);
-                setReviews(remaining)
-                alert('Review deleted')
-            }
-        })
+    if(user){
+      const procced = window.confirm("Are you sure, you want to delete your review?");
+      if(procced){
+          fetch(`https://travellian-server.vercel.app/reviews/${id}`, {
+              method: "DELETE"
+          })
+          .then(res => res.json())
+          .then(data => {
+              console.log(data)
+              if(data.deletedCount > 0){
+                  // notify();
+                  const remaining = reviews.filter(view => view._id !== id);
+                  setReviews(remaining)
+                  alert('Review deleted')
+              }
+          })
+      }
+
+    }
+
+    else{
+       window.confirm("Please login first");
     }
 }
 
@@ -57,7 +62,8 @@ const SingleService = () => {
         message: message,
         name: name,
         img: img,
-        email: user.email
+        email: user.email,
+        servicename: title
     }
 
     fetch('https://travellian-server.vercel.app/reviews', {
@@ -73,9 +79,6 @@ const SingleService = () => {
         event.target.reset()
     })
     .catch(err => console.error(err));
-
-
-
 }
 
   return (
@@ -114,7 +117,7 @@ const SingleService = () => {
 
       {/* Reviews table  */}
       <div className="mt-6">
-        <ReviewCompo reviews={reviews} handleDelete={handleDelete}></ReviewCompo>
+        <ReviewCompo service={service} reviews={reviews} handleDelete={handleDelete}></ReviewCompo>
       </div>
     </div>
   );
