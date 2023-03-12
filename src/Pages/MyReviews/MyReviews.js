@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../Loading/Loading';
 import MyReviewRow from './MyReviewRow';
 
 const MyReviews = () => {
     const {user} = useState();
     const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true);
     
     useEffect(() => {
         // const url = `https://travellian-server.vercel.app/review?serviceId=${_id}`
         const url = `https://travellian-server.vercel.app/reviews`
         fetch(url)
         .then(res => res.json())
-        .then(data => setReviews(data))
+        .then(data => {
+          setReviews(data)
+          setLoading(false)
+        })
         
     }, [reviews]);
+
+    if(loading){
+      return <Loading></Loading>
+    }
 
     const handleDelete = id => {
           const procced = window.confirm("Are you sure, you want to delete your review?");

@@ -4,6 +4,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import UseTitleHook from '../UseTitleHook/UseTitleHook';
 import toast, { Toaster } from 'react-hot-toast';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 const notify = () => toast.success('Login successful');
 const googleProvider = new GoogleAuthProvider();
 
@@ -14,6 +15,7 @@ const Login = () => {
 	const {signinWithPassword, signUpWithPopUp} = useContext(AuthContext)
 	const [success, setSuccess] = useState('');
 	const [error, setError] = useState('');
+	const [viewPass, setViewPass] = useState(false)
 	const location = useLocation();
 	const from = location.state?.from.pathname || "/";
 	const navigate = useNavigate();
@@ -57,7 +59,15 @@ const Login = () => {
 		</div>
 		<div className="space-y-1 text-sm">
 			<label for="password" className="block text-gray-600">Password</label>
-			<input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
+			<div className='flex items-center'>
+				<input type={viewPass ? 'text' : 'password'} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
+				{
+					viewPass ?
+					<FaEyeSlash onClick={() => setViewPass(false)} className='-ml-9 cursor-pointer text-primary text-[18px]'></FaEyeSlash>
+					:
+					<FaEye onClick={() => setViewPass(true)} className='-ml-9 cursor-pointer text-primary text-[18px]'></FaEye>
+				}
+			</div>
 		</div>
 
 		{/* Login error text  */}

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 import UseTitleHook from '../UseTitleHook/UseTitleHook';
 const notify = () => toast.success('Registration succesful');
 const googleProvider = new GoogleAuthProvider();
@@ -14,6 +16,8 @@ const Register = () => {
     const {singupWithEmail, updateUserProfile, signUpWithPopUp} = useContext(AuthContext);
 	const [success, setSuccess] = useState('');
 	const [error, setError] = useState('');
+	const [viewPass, setViewPass] = useState(false)
+
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -80,14 +84,21 @@ const Register = () => {
 		</div>
 		<div className="space-y-1 text-sm">
 			<label for="password" className="block text-gray-600">Password</label>
-			<input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
+			<div className='flex items-center'>
+			<input type={viewPass ? 'text':'password'} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-emerald-600" />
+			{
+					viewPass ?
+					<FaEyeSlash onClick={() => setViewPass(false)} className='-ml-9 cursor-pointer text-primary text-[18px]'></FaEyeSlash>
+					:
+					<FaEye onClick={() => setViewPass(true)} className='-ml-9 cursor-pointer text-primary text-[18px]'></FaEye>
+			}
+			</div>
 		</div>
 
 		{/* success massage  */}
 		{success && <p className='text-success'>Register successful</p> }
 		<div className='text-error'>{error}</div>
-
-		<button type='submit' className="block w-full p-3 text-center rounded-sm text-gray-50 bg-primary">Sign up</button>
+			<button type='submit' className="block w-full p-3 text-center rounded-sm text-gray-50 bg-primary">Sign up</button>
 	</form>
 	<div className="flex items-center pt-4 space-x-1">
 		<div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
